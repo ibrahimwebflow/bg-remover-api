@@ -6,3 +6,4 @@ requests
 uvicorn
 standardjson
 onnxruntime
+flask-cors
