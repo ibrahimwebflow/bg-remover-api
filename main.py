@@ -17,7 +17,7 @@ app = Flask(__name__)
 # Configure CORS to allow requests from your GitHub Pages domain
 from flask_cors import CORS
 # Allow requests from your specific GitHub Pages URL and your localhost for testing
-CORS(app, origins=["https://ibrahimwebflow.github.io/Int-demo/", "http://localhost:8000"])
+CORS(app, origins=["https://ibrahimwebflow.github.io"])
 
 # --- CRITICAL FIX: Pre-load the rembg model on startup ---
 def preload_model():
@@ -94,4 +94,5 @@ if __name__ == '__main__':
     # Use the PORT environment variable provided by Railway, or default to 5000 for local development.
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port, debug=False) # Debug must be False in production
+
 
