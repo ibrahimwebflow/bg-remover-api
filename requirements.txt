@@ -2,3 +2,7 @@ flask
 rembg
 pillow
 gunicorn
+requests
+uvicorn
+standardjson
+onnxruntime
