@@ -22,14 +22,15 @@ CORS(app, origins=["https://ibrahimwebflow.github.io"])
 # --- CRITICAL FIX: Pre-load the rembg model on startup ---
 def preload_model():
     """Force the rembg model to download on startup, not on the first request."""
-    logger.info("Pre-loading rembg model...")
+    logger.info("Pre-loading u2netp model...")
     try:
-        # This forces the download. We use a small test image.
+        # This forces the download of the SPECIFIC model we want to use.
         test_image = Image.new('RGB', (10, 10), color='red')
-        remove(test_image)
-        logger.info("Rembg model successfully loaded and ready.")
+        # Use the same model specification as your main function
+        remove(test_image, model="u2netp")  # <-- CRITICAL CHANGE: Add the model here
+        logger.info("u2netp model successfully loaded and ready.")
     except Exception as e:
-        logger.error(f"Failed to pre-load rembg model: {e}")
+        logger.error(f"Failed to pre-load u2netp model: {e}")
 
 # Run the preload in a separate thread so it doesn't block the app from starting
 threading.Thread(target=preload_model).start()
@@ -94,6 +95,7 @@ if __name__ == '__main__':
     # Use the PORT environment variable provided by Railway, or default to 5000 for local development.
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port, debug=False) # Debug must be False in production
+
 
 
 
