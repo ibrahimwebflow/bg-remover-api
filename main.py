@@ -61,7 +61,7 @@ def remove_bg_api():
 
             # Process the image with rembg
             logger.info("Starting background removal...")
-            output_image = remove(input_image, model="u2net")
+            output_image = remove(input_image)
             logger.info("Background removal successful.")
 
             # Save the result to a bytes buffer (in-memory file)
@@ -94,6 +94,7 @@ if __name__ == '__main__':
     # Use the PORT environment variable provided by Railway, or default to 5000 for local development.
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port, debug=False) # Debug must be False in production
+
 
 
 
